@@ -652,6 +652,69 @@ footer span { color: var(--green); }
   section { padding: 3rem 1rem; }
 }
 
+/* SKILL LEVEL BARS */
+.skill-bars {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+.skill-bar-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.skill-bar-header {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 11px;
+}
+.skill-bar-name { color: var(--text); }
+.skill-bar-pct { color: var(--green); }
+.skill-bar-track {
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.skill-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--green), var(--cyan));
+  border-radius: 2px;
+  width: 0%;
+  transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* CURRENTLY LEARNING BADGE */
+.learning-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 11px;
+  padding: 4px 10px;
+  border: 1px solid var(--cyan);
+  border-radius: 3px;
+  color: var(--cyan);
+  background: rgba(0,212,255,0.06);
+  animation: pulse-border 2s ease-in-out infinite;
+}
+@keyframes pulse-border {
+  0%,100% { border-color: var(--cyan); box-shadow: none; }
+  50% { border-color: var(--cyan); box-shadow: 0 0 8px rgba(0,212,255,0.3); }
+}
+.learning-badge::before { content: '▶'; font-size: 8px; }
+
+/* CURRENTLY LEARNING SECTION */
+.learning-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 1.5rem;
+  margin-bottom: 3rem;
+}
+
 /* FADE IN ANIMATION */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }
@@ -756,6 +819,55 @@ footer span { color: var(--green); }
   <div class="section-label">// 02. skills</div>
   <h2 class="section-title">tech_stack<span>.</span>inventory()</h2>
   <div class="divider"></div>
+
+  <!-- CURRENTLY LEARNING -->
+  <div class="section-label" style="margin-bottom:1rem">// actively learning</div>
+  <div class="learning-grid">
+    <span class="learning-badge">Openclaw</span>
+    <span class="learning-badge">Pihole/adguard</span>
+    <span class="learning-badge">Ansible Advanced</span>
+    <span class="learning-badge">AWS Compliance (Config/SecurityHub)</span>
+    <span class="learning-badge">Cloudflare Zero Trust</span>
+    <span class="learning-badge">AI MCP Operations</span>
+  </div>
+
+  <!-- CORE COMPETENCY BARS -->
+  <div class="section-label" style="margin-bottom:1rem">// core competencies</div>
+  <div class="skill-bars" id="skillBars">
+    <div class="skill-bar-item">
+      <div class="skill-bar-header"><span class="skill-bar-name">AWS Cloud</span><span class="skill-bar-pct">95%</span></div>
+      <div class="skill-bar-track"><div class="skill-bar-fill" data-width="95"></div></div>
+    </div>
+    <div class="skill-bar-item">
+      <div class="skill-bar-header"><span class="skill-bar-name">Kubernetes</span><span class="skill-bar-pct">92%</span></div>
+      <div class="skill-bar-track"><div class="skill-bar-fill" data-width="92"></div></div>
+    </div>
+    <div class="skill-bar-item">
+      <div class="skill-bar-header"><span class="skill-bar-name">Terraform / IaC</span><span class="skill-bar-pct">90%</span></div>
+      <div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div>
+    </div>
+    <div class="skill-bar-item">
+      <div class="skill-bar-header"><span class="skill-bar-name">CI/CD Pipelines</span><span class="skill-bar-pct">93%</span></div>
+      <div class="skill-bar-track"><div class="skill-bar-fill" data-width="93"></div></div>
+    </div>
+    <!-- <div class="skill-bar-item">
+      <div class="skill-bar-header"><span class="skill-bar-name">Ansible</span><span class="skill-bar-pct">85%</span></div>
+      <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div>
+    </div> -->
+    <!-- <div class="skill-bar-item">
+      <div class="skill-bar-header"><span class="skill-bar-name">ArgoCD / GitOps</span><span class="skill-bar-pct">80%</span></div>
+      <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div>
+    </div> -->
+    <div class="skill-bar-item">
+      <div class="skill-bar-header"><span class="skill-bar-name">Azure Cloud</span><span class="skill-bar-pct">88%</span></div>
+      <div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div>
+    </div>
+    <div class="skill-bar-item">
+      <div class="skill-bar-header"><span class="skill-bar-name">Observability Stack</span><span class="skill-bar-pct">90%</span></div>
+      <div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div>
+    </div>
+  </div>
+
   <div class="skills-grid">
     <div class="skill-group">
       <div class="skill-group-label">Cloud Platforms</div>
@@ -780,7 +892,9 @@ footer span { color: var(--green); }
         <span class="skill-tag">Kubernetes</span>
         <span class="skill-tag">Docker</span>
         <span class="skill-tag">Helm</span>
+        <span class="skill-tag">ArgoCD</span>
         <span class="skill-tag">KIND</span>
+        <span class="skill-tag">NKP</span>
         <span class="skill-tag">EKS</span>
         <span class="skill-tag">AKS</span>
         <span class="skill-tag">Kubespray</span>
@@ -788,6 +902,7 @@ footer span { color: var(--green); }
         <span class="skill-tag">Ingress-nginx</span>
         <span class="skill-tag">cert-manager</span>
         <span class="skill-tag">ESO</span>
+        <span class="skill-tag">Kustomize</span>
       </div>
     </div>
     <div class="skill-group">
@@ -795,24 +910,30 @@ footer span { color: var(--green); }
       <div class="skill-tags">
         <span class="skill-tag">Terraform</span>
         <span class="skill-tag">Ansible</span>
+        <span class="skill-tag">Ansible Playbooks</span>
+        <span class="skill-tag">Ansible Roles</span>
         <span class="skill-tag">CloudFormation</span>
         <span class="skill-tag">Bash</span>
         <span class="skill-tag">Python</span>
         <span class="skill-tag">Fish Shell</span>
         <span class="skill-tag">PowerShell</span>
         <span class="skill-tag">AWS CLI</span>
+        <span class="skill-tag">Makefile</span>
       </div>
     </div>
     <div class="skill-group">
-      <div class="skill-group-label">CI/CD &amp; SCM</div>
+      <div class="skill-group-label">CI/CD &amp; GitOps</div>
       <div class="skill-tags">
+        <span class="skill-tag">ArgoCD</span>
+        <span class="skill-tag">GitOps</span>
         <span class="skill-tag">Jenkins</span>
         <span class="skill-tag">Azure Pipelines</span>
+        <span class="skill-tag">GitHub Actions</span>
         <span class="skill-tag">Git</span>
         <span class="skill-tag">Bitbucket</span>
         <span class="skill-tag">SVN</span>
-        <span class="skill-tag">ArgoCD</span>
         <span class="skill-tag">Blue/Green Deploy</span>
+        <span class="skill-tag">Canary Deploy</span>
         <span class="skill-tag">Rolling Updates</span>
       </div>
     </div>
@@ -1055,6 +1176,51 @@ footer span { color: var(--green); }
       </div>
   </div>
      <div class="project-card">
+      <div class="project-header">
+        <div class="project-name">ArgoCD GitOps Pipeline</div>
+        <div class="project-icon">[⎈]</div>
+      </div>
+      <p class="project-desc">Implemented GitOps workflow using ArgoCD for continuous delivery on Kubernetes. Git repo as single source of truth — any commit auto-syncs to cluster. Configured App-of-Apps pattern, sync waves, and health checks for multi-environment deployments (dev → staging → prod).</p>
+      <div class="project-tags">
+        <span class="project-tag">ArgoCD</span>
+        <span class="project-tag">GitOps</span>
+        <span class="project-tag">Kubernetes</span>
+        <span class="project-tag">Helm</span>
+        <span class="project-tag">Kustomize</span>
+        <span class="project-tag">Git</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-name">Ansible Config Management</div>
+        <div class="project-icon">[A]</div>
+      </div>
+      <p class="project-desc">Built reusable Ansible playbooks and roles for automated server configuration, patch management, and application deployment across 50+ nodes. Integrated with CI/CD pipelines (Jenkins/Azure DevOps) for zero-touch infrastructure provisioning — reducing manual intervention by 80%.</p>
+      <div class="project-tags">
+        <span class="project-tag">Ansible</span>
+        <span class="project-tag">Playbooks</span>
+        <span class="project-tag">Roles</span>
+        <span class="project-tag">Inventory</span>
+        <span class="project-tag">Jenkins</span>
+        <span class="project-tag">AWS</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-name">Nutanix NKP Homelab</div>
+        <div class="project-icon">[N]</div>
+      </div>
+      <p class="project-desc">Hands-on study and implementation of Nutanix Kubernetes Platform (NKP) — exploring AHV hypervisor, Nutanix AOS storage, and NKP cluster lifecycle management. Building transferable skills for enterprise Nutanix/NKP DevOps roles including cluster provisioning, Day-2 operations, and hybrid cloud integration.</p>
+      <div class="project-tags">
+        <span class="project-tag">Nutanix NKP</span>
+        <span class="project-tag">AHV</span>
+        <span class="project-tag">Nutanix AOS</span>
+        <span class="project-tag">Kubernetes</span>
+        <span class="project-tag">Hybrid Cloud</span>
+        <span class="project-tag">Prism</span>
+      </div>
+    </div>
+    <div class="project-card">
       <div class="project-header">
         <div class="project-name">Hewlett Packard Enterprise</div>
         <div class="project-icon">[&gt;]</div>
